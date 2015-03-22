@@ -1,6 +1,7 @@
 package darkhour99.darkhourutils.blocks;
 
 import net.minecraft.block.Block;
+import darkhour99.darkhourutils.helpers.DU_Assemblies;
 
 public class DU_Blocks 
 {
@@ -8,7 +9,8 @@ public class DU_Blocks
 	
 	public static void preinit()
 	{
-		titaniumOre = new DU_BlockOre("titaniumOre");
+		DU_Assemblies.titaniumAssembly.preinitBlocks();
+		DU_Assemblies.mithrilAssembly.preinitBlocks();
 	}
 
 }
