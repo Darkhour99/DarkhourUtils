@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import darkhour99.darkhourutils.blocks.DU_Blocks;
 import darkhour99.darkhourutils.items.DU_Items;
 import darkhour99.darkhourutils.lib.DU_Constants;
 
@@ -21,6 +22,7 @@ public class DarkhourUtils
 	{
 		//Adding blocks, items, worldgen etc
 		DU_Items.preinit();
+		DU_Blocks.preinit();
 	}
 	
 	@EventHandler

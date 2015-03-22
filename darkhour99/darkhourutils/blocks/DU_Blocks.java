@@ -1,5 +1,14 @@
 package darkhour99.darkhourutils.blocks;
 
-public class DU_Blocks {
+import net.minecraft.block.Block;
+
+public class DU_Blocks 
+{
+	public static Block titaniumOre;
+	
+	public static void preinit()
+	{
+		titaniumOre = new DU_BlockOre("titaniumOre");
+	}
 
 }
