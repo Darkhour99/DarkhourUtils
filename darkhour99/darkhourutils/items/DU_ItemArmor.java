@@ -11,8 +11,9 @@ public class DU_ItemArmor extends ItemArmor
 	public DU_ItemArmor(String unlocName, ArmorMaterial aMat, int type)
 	{
 		super(aMat, 0, type);
-		this.name = unlocName;
-		GameRegistry.registerItem(this, unlocName);
+		this.name = unlocName;// + (type == 0 ? "Helmet" : type == 1 ? "Chestplate" : type == 2 ? "Leggings" : "Boots");
+		GameRegistry.registerItem(this, name);
+		this.setUnlocalizedName(name);
 		this.setCreativeTab(CreativeTabs.tabCombat);
 	}
 	

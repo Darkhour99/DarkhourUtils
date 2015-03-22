@@ -11,6 +11,7 @@ public class DU_Blocks
 	{
 		DU_Assemblies.titaniumAssembly.preinitBlocks();
 		DU_Assemblies.mithrilAssembly.preinitBlocks();
+		DU_Assemblies.amberAssembly.preinitBlocks();
 	}
 
 }
