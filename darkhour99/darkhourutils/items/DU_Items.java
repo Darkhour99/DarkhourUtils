@@ -1,45 +1,45 @@
 package darkhour99.darkhourutils.items;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import java.util.ArrayList;
+
 import net.minecraft.item.Item;
-import darkhour99.darkhourutils.blocks.DU_BlockOre;
-import darkhour99.darkhourutils.blocks.DU_Blocks;
-import darkhour99.darkhourutils.lib.DU_Constants;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraftforge.common.util.EnumHelper;
+import darkhour99.darkhourutils.helpers.DU_OrePipeline;
 
 public final class DU_Items 
 {
-	public static Item titaniumDust;
-	public static Item titaniumIngot;
+	private final static int hasTools = 1, hasArmor = 2;
+	
+	public static ToolMaterial TITANIUM_T = EnumHelper.addToolMaterial("TITANIUM",2,1200,9.0F,7.0F,11);
+	public static ToolMaterial MITHRIL_T = EnumHelper.addToolMaterial("MITHRIL", 5, 800, 14F, 10F, 17);
+	public static ToolMaterial URU_T = EnumHelper.addToolMaterial("URU", 9, 4000, 10F, 14F, 19);
+
+	public static ArmorMaterial TITANIUM_A = EnumHelper.addArmorMaterial("TITANIUM","fuck you", 20,new int[]{4,7,5,2},17);//XXX "fuck you"
+	
+//	public static Item titaniumDust;
+//	public static Item titaniumIngot;
 	
 	public static Item uruDust;
 	public static Item uruIngot;
 	
+	public static ArrayList<Item> mythrilItems = new ArrayList<Item>();
+	public static ArrayList<Item> titaniumItems = new ArrayList<Item>();
+	
 	
 	public static void preinit()
-	{
-		titaniumDust = new DU_ItemDust("titaniumDust");
-		titaniumIngot = new DU_ItemIngot("titaniumIngot");
-		
-		uruDust = new DU_ItemDust("uruDust");
-		uruIngot = new DU_ItemIngot("uruIngot");
-		
+	{	
+		DU_OrePipeline.orePreinit(titaniumItems, "titanium", hasTools + hasArmor, TITANIUM_T, TITANIUM_A);
+		DU_OrePipeline.orePreinit(mythrilItems, "mythril", hasTools, MITHRIL_T, (ArmorMaterial)null);
 	}
 	
 	public static void init()
 	{
-		RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+
 		
-		renderItem.getItemModelMesher().register(Item.getItemFromBlock(DU_Blocks.titaniumOre), 0, new ModelResourceLocation(DU_Constants.MODID + ":" + ((DU_BlockOre)DU_Blocks.titaniumOre).getName(), "inventory"));
-		
-		renderItem.getItemModelMesher().register(titaniumDust, 0, new ModelResourceLocation(DU_Constants.MODID + ":" + ((DU_ItemDust) titaniumDust).getName(), "inventory"));
-		
-		renderItem.getItemModelMesher().register(titaniumIngot, 0, new ModelResourceLocation(DU_Constants.MODID + ":" + ((DU_ItemIngot) titaniumIngot).getName(), "inventory"));
-		
-		renderItem.getItemModelMesher().register(uruDust, 0, new ModelResourceLocation(DU_Constants.MODID + ":" + ((DU_ItemDust) uruDust).getName(), "inventory"));
-		
-		renderItem.getItemModelMesher().register(uruIngot, 0, new ModelResourceLocation(DU_Constants.MODID + ":" + ((DU_ItemIngot) uruIngot).getName(), "inventory"));
+		DU_OrePipeline.oreInit(titaniumItems,hasTools + hasArmor);
 
 	}
+	
 }
