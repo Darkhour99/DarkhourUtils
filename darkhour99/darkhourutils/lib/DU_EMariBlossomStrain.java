@@ -1,9 +1,10 @@
 package darkhour99.darkhourutils.lib;
 
+import darkhour99.darkhourutils.helpers.DU_IHasStrains;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
-public enum DU_EMariBlossomStrain {
+public enum DU_EMariBlossomStrain implements DU_IHasStrains{
 	//Afgoo, Critical Mass, Ogre, Grape Ape, Silver Unicorn, Ogre Fist, Blazing Blossom
 	//Agent Orange, Chernobyl, Juicy Fruit, Alien OG, Space Queen, Witches Brew, Wither wuther
 	//Amnesia, Harlequin, Acapulco Gold, Kali Mist, Jack The Ripper, Hobbit haze, Glistening Ghast-leaf
@@ -92,12 +93,27 @@ public enum DU_EMariBlossomStrain {
 		return this.strainEffects;
 	}
 	
-	public static int getLength()
+	public int getLength()
 	{
 		return DU_EMariBlossomStrain.values().length;
 	}
 	
-	public static DU_EMariBlossomStrain getStrainFromIndex(int index) throws IllegalArgumentException
+	public static int getLengthStatic()
+	{
+		return DU_EMariBlossomStrain.values().length;
+	}
+	
+	public DU_IHasStrains getStrainFromIndex(int index)
+	{
+		try{
+			return DU_EMariBlossomStrain.values()[index];
+		}
+		catch( ArrayIndexOutOfBoundsException e){
+			throw new IllegalArgumentException("Unknown index value :" + index);
+		}
+	}
+	
+	public DU_IHasStrains getStrainFromIndexStatic(int index)
 	{
 		try{
 			return DU_EMariBlossomStrain.values()[index];

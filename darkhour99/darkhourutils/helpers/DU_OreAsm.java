@@ -25,7 +25,7 @@ import darkhour99.darkhourutils.items.DU_ItemSpade;
 import darkhour99.darkhourutils.items.DU_ItemSword;
 import darkhour99.darkhourutils.lib.DU_Constants;
 
-public class DU_OreAsm {
+public class DU_OreAsm extends DU_BaseAssembly{
 	private final String baseName;
 	private final EOreType oreType;
 	private final int blockHarvestLvl, blockHardness, blockResistance;
@@ -107,6 +107,7 @@ public class DU_OreAsm {
 	 * To be called during mod preinitializing
 	 * Does the actual block construction and instantiation
 	 */
+	@Override
 	public void preinitBlocks()
 	{
 		this.oreBlock = new DU_BlockOre(baseName + "Ore",this.blockHarvestLvl, this.blockHardness
@@ -123,6 +124,7 @@ public class DU_OreAsm {
 	 * To be called during mod preinitializing
 	 * Does the actual item construction and instantiation
 	 */
+	@Override
 	public void preinitItems()
 	{
 		//Creates Products
@@ -159,18 +161,10 @@ public class DU_OreAsm {
 		}
 	}
 	
-	/**
-	 * Initialize for items
-	 * To be called during mod initializing
-	 * Registers render items and recipes
-	 */
-	public void initItems()
-	{
-		this.registerRenderItems();
-		this.registerRecipes();
-	}
 
-	private void registerRenderItems() {
+
+	@Override
+	protected void registerRenderItems() {
 		RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 		
 		//Products
@@ -212,7 +206,8 @@ public class DU_OreAsm {
 		}
 	}
 	
-	private void registerRecipes()
+	@Override
+	protected void registerRecipes()
 	{
 
 		registerBlockRecipes();
